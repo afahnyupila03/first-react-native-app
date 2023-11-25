@@ -5,12 +5,14 @@ export default function () {
     <ScrollView>
       <View>
         <Text>This is the Home Page</Text>
-        <Text>Well Done, we have our app up and running...</Text>
+        <Text style={styles.welcomeText}>Well Done, we have our app up and running...</Text>
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-    
+    welcomeText: {
+        fontSize: 40
+    }
 })
