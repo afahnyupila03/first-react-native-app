@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import HomePage from './src/Screens/Home/HomePage';
+import TaskListViewScreen from './src/Screens/Home/TaskListViewScreen';
 
 
 function App(): JSX.Element {
@@ -16,7 +16,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaView>
       <ScrollView>
-        <HomePage />
+        <TaskListViewScreen />
       </ScrollView>
     </SafeAreaView>
   );
