@@ -1,7 +1,9 @@
 import {Text, View, ScrollView, StyleSheet} from 'react-native';
 import TaskListItems from '../../Components/TaskListItems';
 import FabButton from '../../Components/FabButton';
-import {Header} from 'react-native/Libraries/NewAppScreen';
+import React from 'react';
+import FeatureCard from '../../Components/FeatureCard';
+import {Features} from './components/Features';
 
 const Title = [
   {title: 'Task 1', id: 1, message: 'This is task 1'},
@@ -24,26 +26,31 @@ const Title = [
 
 export default function () {
   return (
-    <View style={styles.listViewContainer}>
-      <ScrollView>
-        <View>
-          {Title.map(task => (
-            <TaskListItems
-              key={task.id}
-              taskData={task}
-              onPress={() =>
-                console.log(
-                  'title: ' + task.title,
-                  'id: ' + task.id,
-                  'message: ' + task.message,
-                )
-              }
-            />
-          ))}
-        </View>
-      </ScrollView>
-
-      <FabButton onPress={() => console.log('Create Task')} iconText="Create" />
+    <View>
+      <View style={styles.listViewContainer}>
+        <ScrollView>
+          <View>
+            {Title.map(task => (
+              <TaskListItems
+                key={task.id}
+                taskData={task}
+                onPress={() =>
+                  console.log(
+                    'title: ' + task.title,
+                    'id: ' + task.id,
+                    'message: ' + task.message,
+                  )
+                }
+              />
+            ))}
+          </View>
+        </ScrollView>
+        <FabButton
+          onPress={() => console.log('Create Task')}
+          iconText="Create"
+        />
+      </View>
+      <Features />
     </View>
   );
 }
