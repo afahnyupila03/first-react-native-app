@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import TaskListViewScreen from './src/Screens/Home/TaskListViewScreen';
+import TaskListViewScreen from './Screens/Home/TaskListViewScreen';
 
 
 function App(): JSX.Element {
