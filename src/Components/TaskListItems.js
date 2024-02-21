@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 export default function ({taskData, onPress}) {
-  const {title, id, message} = taskData || [];
+  const {todo, id, completed} = taskData || [];
 
   return (
     <TouchableOpacity onPress={onPress}>
@@ -18,12 +18,12 @@ export default function ({taskData, onPress}) {
           <View style={styles.listText}>
             <View>
               <Text style={{fontSize: 20, color: 'white', fontStyle: 'italic'}}>
-                {reduceChars(title)}
+                {reduceChars(todo)}
               </Text>
             </View>
             <View>
               <Text style={{fontSize: 20, color: 'white', fontStyle: 'italic'}}>
-                {reduceChars(message)}
+                {completed}
               </Text>
             </View>
           </View>
@@ -34,9 +34,9 @@ export default function ({taskData, onPress}) {
   );
 }
 
-function reduceChars (CHARS) {
+function reduceChars(CHARS) {
   const MAX_CHARS = 10
-  if( CHARS.length > MAX_CHARS) {
+  if (CHARS.length > MAX_CHARS) {
     return `${CHARS.slice(0, MAX_CHARS)}...`
   }
   return CHARS;

@@ -1,9 +1,11 @@
-import {Text, View, ScrollView, StyleSheet} from 'react-native';
+import {Text, View, ScrollView, StyleSheet, ActivityIndicator} from 'react-native';
 import TaskListItems from '../../Components/TaskListItems';
 import FabButton from '../../Components/FabButton';
 import React from 'react';
+import {useQuery} from "react-query";
 import FeatureCard from '../../Components/FeatureCard';
 import {Features} from './components/Features';
+import {TodosService} from "../../Services/TodosService";
 
 const Title = [
   {title: 'Task 1', id: 1, message: 'This is task 1'},
@@ -25,20 +27,34 @@ const Title = [
 ];
 
 export default function () {
+
+  const {data = {}, isFetching, isError, error, refetch} = useQuery(
+    "todos", () => TodosService()
+  )
+  console.log(data);
+
+  if (isFetching) {
+    return (
+      <View>
+        <ActivityIndicator size="large" />
+      </View>
+    )
+  }
+
   return (
     <View>
       <View style={styles.listViewContainer}>
         <ScrollView>
           <View>
-            {Title.map(task => (
+            {data.map(task => (
               <TaskListItems
                 key={task.id}
                 taskData={task}
                 onPress={() =>
                   console.log(
-                    'title: ' + task.title,
+                    'title: ' + task.todo,
                     'id: ' + task.id,
-                    'message: ' + task.message,
+                    'message: ' + task.completed,
                   )
                 }
               />
@@ -50,7 +66,7 @@ export default function () {
           iconText="Create"
         />
       </View>
-      <Features />
+      <Features/>
     </View>
   );
 }
